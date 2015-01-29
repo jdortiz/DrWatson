@@ -1,25 +1,24 @@
 package com.powwau.drwatson;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import java.util.Random;
 
 
 public class MainActivity extends ActionBarActivity {
-
-    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mTextView = (TextView)findViewById(R.id.text_view_quote);
         customizeActionBar();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().
+                add(R.id.fragment, new QuoteFragment()).
+                commit();
     }
 
     private void customizeActionBar() {
@@ -45,20 +44,11 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.action_refresh_quote:
-                displayRandomQuote();
-                return true;
             case R.id.action_settings:
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void displayRandomQuote() {
-        String[] quotes = getResources().getStringArray(R.array.quotes);
-        Random random = new Random();
-        mTextView.setText(quotes[random.nextInt(quotes.length)]);
     }
 
 }
