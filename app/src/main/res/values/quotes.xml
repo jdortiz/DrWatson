@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="quotes">
+        <item>My name is Sherlock Holmes.  It is my business to know what other people don\'t know.</item>
+        <item>I am the last and highest court of appeal in detection.</item>
+        <item>There is nothing like first-hand evidence.</item>
+        <item>The world is full of obvious things which nobody by any chance ever observes.</item>
+        <item>You see, but you do not observe. The distinction is clear.</item>
+        <item>I never guess. It is a shocking habit, destructive to the logical faculty.</item>
+        <item>You know my method. It is founded upon the observation of trifles.</item>
+        <item>There is nothing more deceptive than an obvious fact.</item>
+        <item>Eliminate all other factors, and the one which remains must be the truth.</item>
+        <item>"Data! Data! Data!" he cried impatiently. "I can't make bricks without clay."</item>
+    </string-array>
+</resources>

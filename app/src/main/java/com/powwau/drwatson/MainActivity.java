@@ -5,14 +5,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.Random;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mTextView = (TextView)findViewById(R.id.text_view_quote);
         customizeActionBar();
     }
 
@@ -22,7 +28,6 @@ public class MainActivity extends ActionBarActivity {
         actionBar.setIcon(R.drawable.ic_launcher);
         actionBar.setDisplayShowHomeEnabled(true);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,10 +44,21 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_refresh_quote:
+                displayRandomQuote();
+                return true;
+            case R.id.action_settings:
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void displayRandomQuote() {
+        String[] quotes = getResources().getStringArray(R.array.quotes);
+        Random random = new Random();
+        mTextView.setText(quotes[random.nextInt(quotes.length)]);
+    }
+
 }
