@@ -1,6 +1,7 @@
 package com.powwau.drwatson;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -80,6 +81,11 @@ public class QuoteFragment extends Fragment {
             case R.id.action_refresh_quote:
                 displayRandomQuote();
                 handled = true;
+                break;
+            case R.id.action_share:
+                shareQuote();
+                handled = true;
+                break;
         }
         if (!handled) {
             handled = super.onOptionsItemSelected(item);
@@ -93,4 +99,11 @@ public class QuoteFragment extends Fragment {
         mTextViewQuote.setText(quotes[random.nextInt(quotes.length)]);
     }
 
+    private void shareQuote() {
+        String quote = mTextViewQuote.getText().toString();
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, quote);
+        startActivity(intent);
+    }
 }

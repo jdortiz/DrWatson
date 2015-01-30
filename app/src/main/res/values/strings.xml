@@ -15,5 +15,6 @@
     <string name="title_activity_settings">Settings</string>
     <string name="user_intro">Hello %s. Enjoy this quote from Sherlock:</string>
     <string name="default_username">my friend</string>
+    <string name="share_your_quote">Share your quote</string>
 
 </resources>
