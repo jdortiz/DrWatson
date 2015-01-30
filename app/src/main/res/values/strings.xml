@@ -7,5 +7,11 @@
     <string name="action_bar_title">Elementary</string>
     <string name="action_refresh_quote">Refresh Quote</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pref_color_title">Quote Text Color</string>
+    <string name="pref_color_summary">Color used for the text of the quote.</string>
+    <string name="pref_category_customization">Customization</string>
+    <string name="pref_username_title">Your name</string>
+    <string name="pref_username_summary">Personalize your message with your name.</string>
+    <string name="title_activity_settings">Settings</string>
 
 </resources>

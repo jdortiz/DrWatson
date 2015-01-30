@@ -1,5 +1,6 @@
 package com.powwau.drwatson;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +11,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends ActionBarActivity {
 
+    public static final int RESULT_SETTINGS = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
         customizeActionBar();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().
-                add(R.id.fragment, new QuoteFragment()).
+                replace(R.id.fragment, new QuoteFragment()).
                 commit();
     }
 
@@ -45,6 +48,8 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
+                Intent intent = new Intent(this, AppSettingsActivity.class);
+                startActivityForResult(intent, RESULT_SETTINGS);
                 return true;
         }
 

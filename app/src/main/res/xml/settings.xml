@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/pref_category_customization">
+        <EditTextPreference
+            android:key="username_preference"
+            android:title="@string/pref_username_title"
+            android:summary="@string/pref_username_summary" />
+
+        <ListPreference
+            android:key="color_preference"
+            android:title="@string/pref_color_title"
+            android:summary="@string/pref_color_summary"
+            android:entries="@array/color_options"
+            android:entryValues="@array/color_options"/>
+    </PreferenceCategory>
+</PreferenceScreen>
