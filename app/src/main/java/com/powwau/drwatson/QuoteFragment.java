@@ -1,7 +1,9 @@
 package com.powwau.drwatson;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,7 +21,10 @@ import java.util.Random;
  */
 public class QuoteFragment extends Fragment {
 
-    TextView mTextView;
+    private final static String USERNAME_PREFERENCE = "username_preference";
+
+    TextView mTextViewQuote;
+    TextView mTextViewUserIntro;
 
     public QuoteFragment() {
         // Required empty public constructor
@@ -36,9 +41,26 @@ public class QuoteFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_quote, container, false);
-        mTextView = (TextView)rootView.findViewById(R.id.text_view_quote);
+        wireUpViews(rootView);
+        displayUserIntro();
         displayRandomQuote();
         return rootView;
+    }
+
+    private void displayUserIntro() {
+        String username = getUsername();
+        String user_intro = String.format(getString(R.string.user_intro), username);
+        mTextViewUserIntro.setText(user_intro);
+    }
+
+    private String getUsername() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        return sharedPreferences.getString(USERNAME_PREFERENCE, getString(R.string.default_username));
+    }
+
+    private void wireUpViews(View rootView) {
+        mTextViewQuote = (TextView)rootView.findViewById(R.id.text_view_quote);
+        mTextViewUserIntro = (TextView)rootView.findViewById(R.id.text_view_user_intro);
     }
 
 
@@ -68,7 +90,7 @@ public class QuoteFragment extends Fragment {
     private void displayRandomQuote() {
         String[] quotes = getResources().getStringArray(R.array.quotes);
         Random random = new Random();
-        mTextView.setText(quotes[random.nextInt(quotes.length)]);
+        mTextViewQuote.setText(quotes[random.nextInt(quotes.length)]);
     }
 
 }
